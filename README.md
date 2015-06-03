@@ -49,5 +49,15 @@ Open xwalk-webrtc/server/main.js and edit the SERVER_IP var
 Then start the web server by going into xwalk-webrtc/server dir and running the command `node index.js'
 
 
+##Building clients for android.
+
+cd crosswalk-13
+
+```
+python make_apk.py --package=org.crosswalkproject.example \
+   --enable-remote-debugging --manifest=../xwalk-webrtc/<* enter client dir name here *>/manifest.json
+```
+
+
 
 
