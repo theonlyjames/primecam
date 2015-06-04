@@ -4,7 +4,7 @@
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0, user-scalable=no">
         <meta charset="utf-8">
-        <title>WebRTC client</title>
+        <title>Buddy Client</title>
 
         <style>
         body, 
@@ -76,6 +76,7 @@
             </div>
             <button id="close">Close Form</button>
             <button id="testBtn">Test Btn</button>
+            <button id="wstest">WS Test Btn</button>
             <hr>
         </div>
 
@@ -109,7 +110,20 @@
         <script type="text/javascript">
             var close = document.getElementById("close");
             var form = document.getElementById("form");
+            var wstest = document.getElementById('wstest');
             var formHide = false;
+            var ws = new WebSocket('ws://10.195.249.111:1234');
+
+            wstest.onclick = function () {
+                ws.send('james was here');
+            };
+            ws.onopen = function () {
+                console.log('ws open');
+            };
+            ws.on('message', function (data) {
+                consle.log('on message: ', data);
+            };
+
             close.onclick = function () {
                 if (formHide === false) {
                     form.style.display = "none";

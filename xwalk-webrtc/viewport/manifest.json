@@ -1,6 +1,6 @@
 {
-    "name": "WebRTC",
-    "description": "WebRTC client",
+    "name": "PrimeCam View",
+    "description": "Prime Cam Viewport",
     "version": "0.0.1",
     "app": {
         "launch": {

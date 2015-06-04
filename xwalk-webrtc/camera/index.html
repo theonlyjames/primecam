@@ -4,7 +4,7 @@
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0, user-scalable=no">
         <meta charset="utf-8">
-        <title>WebRTC client</title>
+        <title>Camera Client</title>
 
         <style>
         #credentials, #form, #video, #dialler, #messages {
@@ -17,16 +17,18 @@
             width: 100vw;
         }
         #local-video {
-            display: none;
-            max-width: 150px;
-        }
-        #remote {
             width: 100vw;
             height: 100vh;
-            background: lightblue;
+        }
+        #local{ 
+            width: 100vw;
+            height: 100vh;
+            background: purple;
+        }
+        #remote {
+            display: none;
         }
         #local p,
-        #local,
         #remote p {
             display: none;
         }
@@ -39,7 +41,7 @@
         <div id="form">
             <div id="credentials">
                 <p>
-                Connect as:
+                Connect as Camera:
                 <input type="text" id="caller-id" size="15">
                 <button id="connect">Connect</button>
                 </p>
@@ -76,10 +78,10 @@
         </div>
 
         <script type="text/javascript">
-            var remote = document.getElementById("remote");
+            var local = document.getElementById("local");
             var form = document.getElementById("form");
             var formHide = false;
-            remote.onclick = function () {
+            local.onclick = function () {
                 if (formHide === false) {
                     form.style.display = "none";
                     formHide = true;

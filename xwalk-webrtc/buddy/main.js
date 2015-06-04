@@ -1,9 +1,8 @@
 /*global Peer */
-var websocket = new WebSocket('ws://10.192.217.32:1234');
 var dataConnection;
 document.addEventListener('DOMContentLoaded', function () {
     // PeerJS server location
-    var SERVER_IP = '10.192.217.32';
+    var SERVER_IP = '10.195.249.111';
     var SERVER_PORT = 9000;
 
     // DOM elements manipulated as user interacts with the app
@@ -16,14 +15,14 @@ document.addEventListener('DOMContentLoaded', function () {
     var localVideo = document.querySelector('#local-video');
     // controller
     var controler = document.getElementById("controls");
-    var test = document.getElementById("test");
+    //var test = document.getElementById("test");
 
     // the ID set for this client
     var callerId = null;
 
     // PeerJS object, instantiated when this client connects with its
     // caller ID
-    var peer = null;
+    //var peer = null;
 
     // Data connection for sending messages to peers
     //var dataConnection = null;

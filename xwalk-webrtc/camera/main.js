@@ -1,7 +1,7 @@
 /*global Peer */
 document.addEventListener('DOMContentLoaded', function () {
   // PeerJS server location
-  var SERVER_IP = '10.192.217.32';
+  var SERVER_IP = '10.195.249.111';
   var SERVER_PORT = 9000;
 
   // DOM elements manipulated as user interacts with the app
