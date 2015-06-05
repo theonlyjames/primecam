@@ -1,7 +1,7 @@
 /*global Peer */
 document.addEventListener('DOMContentLoaded', function () {
     // PeerJS server location
-    var SERVER_IP = '10.195.249.111';
+    var SERVER_IP = '10.192.217.32';
     var SERVER_PORT = 9000;
 
     // DOM elements manipulated as user interacts with the app
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var dialBtn = document.querySelector('#dial');
     var test = document.querySelector('#test');
     var remoteVideo = document.querySelector('#remote-video');
-    var localVideo = document.querySelector('#local-video');
+    //var localVideo = document.querySelector('#local-video');
 
     // the ID set for this client
     var callerId = null;
@@ -55,34 +55,34 @@ document.addEventListener('DOMContentLoaded', function () {
     // "LOCAL" video element
     // successCb: has the signature successCb(stream); receives
     // the local video stream as an argument
-    var getLocalStream = function (successCb) {
-        if (localStream && successCb) {
-            successCb(localStream);
-        }
-        else {
-            navigator.webkitGetUserMedia(
-                {
-                audio: false,
-                video: true
-            },
+    //var getLocalStream = function (successCb) {
+    //    if (localStream && successCb) {
+    //        successCb(localStream);
+    //    }
+    //    else {
+    //        navigator.webkitGetUserMedia(
+    //            {
+    //            audio: false,
+    //            video: true
+    //        },
 
-            function (stream) {
-                localStream = stream;
+    //        function (stream) {
+    //            localStream = stream;
 
-                localVideo.src = window.URL.createObjectURL(stream);
+    //            localVideo.src = window.URL.createObjectURL(stream);
 
-                if (successCb) {
-                    successCb(stream);
-                }
-            },
+    //            if (successCb) {
+    //                successCb(stream);
+    //            }
+    //        },
 
-            function (err) {
-                logError('failed to access local camera');
-                logError(err.message);
-            }
-            );
-        }
-    };
+    //        function (err) {
+    //            logError('failed to access local camera');
+    //            logError(err.message);
+    //        }
+    //        );
+    //    }
+    //};
 
     // set the "REMOTE" video element source
     var showRemoteStream = function (stream) {
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // get local stream ready for incoming calls once the wrapped
             // WebSocket is open
             peer.socket._socket.onopen = function () {
-                getLocalStream();
+                //getLocalStream();
             };
 
             // handle events representing incoming calls
@@ -170,18 +170,27 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        getLocalStream(function (stream) {
-            logMessage('outgoing call initiated');
+        var call = peer.call(recipientId);
 
-            var call = peer.call(recipientId, stream);
+        call.on('stream', showRemoteStream);
 
-            call.on('stream', showRemoteStream);
-
-            call.on('error', function (e) {
-                logError('error with call');
-                logError(e.message);
-            });
+        call.on('error', function (e) {
+            logError('error with call');
+            logError(e.message);
         });
+        
+        //getLocalStream(function (stream) {
+        //    logMessage('outgoing call initiated');
+
+        //    var call = peer.call(recipientId, stream);
+
+        //    call.on('stream', showRemoteStream);
+
+        //    call.on('error', function (e) {
+        //        logError('error with call');
+        //        logError(e.message);
+        //    });
+        //});
     };
 
     // answer an incoming call
@@ -191,10 +200,10 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        if (!localStream) {
-            logError('could not answer call as there is no localStream ready');
-            return;
-        }
+        //if (!localStream) {
+        //    logError('could not answer call as there is no localStream ready');
+        //    return;
+        //}
 
         logMessage('incoming call answered');
 

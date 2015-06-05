@@ -6,6 +6,7 @@
         <meta charset="utf-8">
         <title>Viewport Client</title>
 
+        <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
         <style>
         #credentials, #form, #video, #dialler, #messages {
             clear: both;
@@ -36,6 +37,7 @@
 
     <body>
 
+        <div id="log"></div>
         <div id="form">
             <div id="credentials">
                 <p>
@@ -79,16 +81,7 @@
         <script type="text/javascript">
             var remote = document.getElementById("remote");
             var form = document.getElementById("form");
-            var wstest = document.getElementById("wstest");
             var formHide = false;
-            var ws = new WebSocket('ws://10.195.249.111:1234');
-
-            wstest.onclick = function () {
-                ws.send('james was here');
-            };
-            ws.onopen = function () {
-                console.log('ws open');
-            };
             remote.onclick = function () {
                 if (formHide === false) {
                     form.style.display = "none";
@@ -101,5 +94,10 @@
         </script>
         <script src="peer.js"></script>
         <script src="main.js"></script>
+        <script src="view.js"></script>
+        <script type="text/javascript">
+            ws.socketio.init();
+        </script>
+
     </body>
 </html>

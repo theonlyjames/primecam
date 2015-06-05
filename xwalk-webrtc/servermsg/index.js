@@ -4,7 +4,7 @@ var io = require('socket.io');
 var yourserver = http.createServer(function (request, response) {
     response.writeHead(250, { 'Content-Type': 'text/html' });
     response.end('Your WebSocket server is running');
-}).listen(22222);
+}).listen(2222);
 
 var yoursocket = io.listen(yourserver).set('log', 1);
 
