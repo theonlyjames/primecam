@@ -214,22 +214,11 @@ document.addEventListener('DOMContentLoaded', function () {
         call.answer(localStream);
     };
 
-    var getDataConn = function () {
-        return dataConnection;
-    };
-
-    var controlEvent = function (target) {
-        var dataConn = getDataConn();
-        dataConn.send({
-            msg: target
-        });
-    };
-
     // wire up button events
     connectBtn.addEventListener('click', connect);
     dialBtn.addEventListener('click', dial);
     // controler
-    controler.addEventListener('click', function(event) {
-        controlEvent(event.target.id);
+    controler.addEventListener('click', function() {
+        //controlEvent(event.target.id);
     });
 });

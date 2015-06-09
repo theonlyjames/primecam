@@ -20,11 +20,15 @@
         #credentials, #form, #video, #dialler, #messages {
             clear: both;
         }
+        #form {
+            position: relative;
+            z-index: 99;
+        }
         #form.hide {
             display: none;
         }
         #remote-video {
-            width: 100vw;
+            width: 1024px;
         }
         #local-video {
             display: none;
@@ -43,14 +47,25 @@
         }
 
         #controls {
-            position: relative;
+            position: fixed;
             top: 0px;
             left: 0px;
             width: 100vw;
             height: 100vh;
-            background: lightpink;
+            background: url(images/arrows.png) no-repeat;
+            background-size: 100%;
             opacity: 0.4;
             text-align: center;
+        }
+
+        #log {
+            display: none;
+        }
+
+        #placeholder {
+            display: none;
+            height: 1080px;
+            width: 1920px;
         }
 
         </style>
@@ -85,7 +100,6 @@
 
         <div id="video">
 
-
             <div id="remote">
                 <p><strong>REMOTE:</strong></p>
                 <video id="remote-video" autoplay></video>
@@ -98,11 +112,6 @@
             </div>
 
             <div id="controls">
-                <h1>THIS IS WHERE CONTROLS GO</h1>
-                <h1>THIS IS WHERE CONTROLS GO</h1>
-                <h1>THIS IS WHERE CONTROLS GO</h1>
-                <h1>THIS IS WHERE CONTROLS GO</h1>
-                <h1>THIS IS WHERE CONTROLS GO</h1>
             </div>
 
         </div>

@@ -8,14 +8,21 @@
 
         <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
         <style>
+        html, body {
+            margin: 0px;
+            padding: 0px;
+        }
         #credentials, #form, #video, #dialler, #messages {
             clear: both;
+        }
+        #form {
         }
         #form.hide {
             display: none;
         }
         #remote-video {
-            width: 100vw;
+            /* define max width and the height will auto componsate */
+            width: 1024px;
         }
         #local-video {
             display: none;
@@ -30,6 +37,17 @@
         #local,
         #remote p {
             display: none;
+        }
+
+        #placeholder {
+            display: none;
+            width: 1920px;
+            height: 1080px;
+        }
+        #log {
+            display: none;
+            height: 100px;
+            overflow: hidden;
         }
 
         </style>
@@ -61,6 +79,7 @@
 
         <div id="video">
 
+        <img id="placeholder" src="images/placeholder.jpg" alt="" />
 
             <div id="remote">
                 <p><strong>REMOTE:</strong></p>
@@ -96,6 +115,7 @@
         <script src="main.js"></script>
         <script src="view.js"></script>
         <script type="text/javascript">
+            viewport.init();
             ws.socketio.init();
         </script>
 

@@ -1,4 +1,5 @@
 /*global Peer */
+/* CAMERA CLIENT */
 document.addEventListener('DOMContentLoaded', function () {
   // PeerJS server location
   var SERVER_IP = '10.192.217.32';

@@ -6,7 +6,7 @@ var yourserver = http.createServer(function (request, response) {
     response.end('Your WebSocket server is running');
 }).listen(2222);
 
-var yoursocket = io.listen(yourserver).set('log', 1);
+var yoursocket = io.listen(yourserver); //.set('log', 1);
 
 yoursocket.on('connection', function (client) {
     client.on('YourcustomMessage', function (data) {
@@ -15,6 +15,11 @@ yoursocket.on('connection', function (client) {
         var current = new Date().getTime();
 
         client.broadcast.emit('YourMessageResponse', data + '(broadcasted)->' + current);
+    });
+    client.on('yScrollEvent', function (data) {
+        console.log('yScroll Event: ', data);
+
+        client.broadcast.emit('yScrollResponse', data);
     });
     client.on('disconnect', function () {
         console.log('Your Client disconnected');

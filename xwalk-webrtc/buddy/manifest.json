@@ -1,6 +1,6 @@
 {
-    "name": "WebRTC",
-    "description": "WebRTC client",
+    "name": "Budy Client",
+    "description": "Budy Client",
     "version": "0.0.1",
     "app": {
         "launch": {
